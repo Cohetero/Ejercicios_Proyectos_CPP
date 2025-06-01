@@ -1,7 +1,7 @@
 #include <cmath>
 #include "Vector3d.h"
 
-Vector3d ::Vector3d(int x, int y, int z) : x(x), y(y), z(z) {}
+Vector3d::Vector3d(int x, int y, int z) : x(x), y(y), z(z) {}
 
 bool Vector3d::esIgual(const Vector3d &vect) const
 {
