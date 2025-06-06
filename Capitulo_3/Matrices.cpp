@@ -47,17 +47,17 @@ void printMatrix(const std::vector<std::vector<int>> &matriz)
     std::cout << std::endl;
 }
 
-void transposicionMatrix(const std::vector<std::vector<int>> &matriz)
+std::vector<std::vector<int>> matrizTranspuesta(const std::vector<std::vector<int>> &matriz)
 {
     int rows = matriz.size();
     int columns = matriz[0].size();
-    for (int j = 0; j < columns; j++)
-    {
-        for (int i = 0; i < rows; i++)
-            std::cout << matriz[i][j] << " ";
-        std::cout << "\n";
-    }
-    std::cout << std::endl;
+    std::vector<std::vector<int>> transpuesta(columns, std::vector<int>(rows));
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++)
+            transpuesta[j][i] = matriz[i][j];
+
+    return transpuesta;
 }
 
 void sumaMatrixNoDiagonal(const std::vector<std::vector<int>> &matriz)
@@ -149,16 +149,16 @@ int main()
                 printMatrix(A);
                 // Transposicion de matriz
                 std::cout << "Transposicion de la Matriz A\n";
-                transposicionMatrix(A);
+                auto C = matrizTranspuesta(A);
+                printMatrix(C);
             }
             else
             {
                 std::cout << "Forma Normal de la Matriz B:\n";
                 printMatrix(B);
-
-                // Transposicion de matriz
                 std::cout << "Transposicion de la Matriz B\n";
-                transposicionMatrix(B);
+                auto C = matrizTranspuesta(B);
+                printMatrix(C);
             }
             break;
         case 4:
